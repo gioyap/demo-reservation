@@ -2,45 +2,48 @@
 
 import mongoose from "mongoose";
 
-const ReservationSchema = new mongoose.Schema({
-	email: {
-		type: String,
-		required: [true, "Email is required"],
+const ReservationSchema = new mongoose.Schema(
+	{
+		email: {
+			type: String,
+			required: [true, "Email is required"],
+		},
+		company: {
+			type: String,
+			required: [true, "Company is required"],
+		},
+		department: {
+			type: String,
+			required: [true, "Department is required"],
+		},
+		name: {
+			type: String,
+			required: [true, "Name is required"],
+		},
+		title: {
+			type: String,
+			required: [true, "Title is required"],
+		},
+		fromDate: {
+			type: Date,
+		},
+		toDate: {
+			type: Date,
+		},
+		status: {
+			type: String,
+			default: "Pending",
+		},
+		description: {
+			type: String,
+		},
+		processedBy: {
+			type: String,
+			required: false,
+		},
 	},
-	company: {
-		type: String,
-		required: [true, "Company is required"],
-	},
-	department: {
-		type: String,
-		required: [true, "Department is required"],
-	},
-	name: {
-		type: String,
-		required: [true, "Name is required"],
-	},
-	title: {
-		type: String,
-		required: [true, "Title is required"],
-	},
-	fromDate: {
-		type: Date,
-	},
-	toDate: {
-		type: Date,
-	},
-	status: {
-		type: String,
-		default: "Pending",
-	},
-	description: {
-		type: String,
-	},
-	processedBy: {
-		type: String,
-		required: false,
-	},
-});
+	{ collection: "demo_reservation" }
+);
 
 ReservationSchema.index({ status: 1 });
 
